@@ -1,0 +1,38 @@
+﻿@model List<ParcelSolutionsHomePrj.Models.CustomData>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>View Data: @ViewBag.StoredProcedure</h2>
+
+@if (Model.Count > 0)
+{
+    <form>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                @foreach (var column in Model[0].Data.Keys)
+                {
+                    <th>@column</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model)
+            {
+                <tr>
+                    @foreach (var value in row.Data.Values)
+                    {
+                        <td>@value</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+    </form>
+}
+else
+{
+    <p>No data available.</p>
+}
